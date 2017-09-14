@@ -1,27 +1,119 @@
 {include file="common/header" /}
 {include file="common/menu" /}
-<section class="Hui-article-box">
-<div class="pd-20">
-  <!-- <form action="{:url('Jurisdiction/amstt')}" method="post" class="form form-horizontal" id="form-user-add"> -->
-  <h2><font color="red">已拥有的角色</font></h2>
-      <p><input type="checkbox" name="checkss" value=""> 123
-    <P class="dex"></P>
-    <div class="row cl">
-      <div class="col-9 col-offset-2">
-        <input class="btn btn-primary radius del"  value="&nbsp;&nbsp;删除&nbsp;&nbsp;">
+<style>
+    *{
+        margin:0;
+        padding:0;
+    }
+    i{
+        font-style: normal;
+    }
+    a{
+        text-decoration: none;
+    }
+    input{
+        outline: none;
+        border:none;
+    }
+    /*设定html和body的宽度为100%*/
+    html,body{
+        width:100%; 
+        font: 14px/150% tahoma,arial,Microsoft YaHei,Hiragino Sans GB,"\u5b8b\u4f53",sans-serif;
+        -webkit-font-smoothing: antialiased;
+        color: #666;
+    }
+    .desc{
+      font-size: 18px;
+        line-height: 34px;
+        border-left: 1px solid #ccc;
+        position: absolute;
+        left: 200px;
+        top:28px;
+        padding-left: 20px;
+        font-weight:bold;
+    }
+    header{
+      width:100%;
+        height: 110px;
+        box-shadow: 10px 10px 10px rgba(111,111,111,.5);
+        position: relative;
+    }
+    /*注册信息*/
+    /*总体布局*/
+    form{
+      width: 400px;
+      margin: auto;
+      margin-top: 100px;
+    }
+    .register-box{
+      border: 1px solid #ddd;
+        margin-bottom: 32px;
+    }
+    .register-box label{
+      height: 52px;
+        line-height: 52px;
+        padding-left: 20px;
+        display: inline-block;
+    }
+    .register-box input{
+      width: 190px;
+        height: 19px;
+        padding-bottom: 11px;
+        padding-left: 20px;
+        padding-top: 16px;
+        font-size: 14px;
+        color: #666;
+        font-family: "Microsoft YaHei","Hiragino Sans GB";
+    }
+    .register-box .tips{
+      position: absolute;
+        margin-top: 5px;
+        font-size: 14px;
+        color: #ccc;
+    }
+    /*用户名*/
+    .register-box .username_label{
+      word-spacing: 10px;
+    }
+    /*密码，确认密码，*/
+    .register-box .other_label{
+      word-spacing: 2px;
+    }
+    /*提交按钮*/
+    .submit_btn button{
+      width: 100%;
+        height: 54px;
+        color: #fff;
+        background: #e22;
+        border: 0;
+        font-size: 16px;
+        font-family: "Microsoft YaHei","Hiragino Sans GB";
+    }
+</style>
+<section>
+  <form action="{:url('Jurisdiction/amstt_user')}" method="post">
+    <div class="register-box">
+          <label for="username" class="username_label">用 户 名 称
+      <input maxlength="20" name="nickname" type="text" placeholder="您的用户名和登录名">
+          </label>
+      <div class="tips">
+            
+          </div>
+    </div>
+    <input name="__RequestVerificationToken" type="hidden" value="fkfh8D89BFqTdrE2iiSdG_L781RSRtdWOH411poVUWhxzA5MzI8es07g6KPYQh9Log-xf84pIR2RIAEkOokZL3Ee3UKmX0Jc8bW8jOdhqo81" />
+    <div class="register-box">
+      <label for="username" class="other_label">设  置  密  码
+      <input maxlength="20" type="password" name="password" placeholder="建议至少使用两种字符组合">
+      </label>
+      <div class="tips">
+        
       </div>
     </div>
-    <hr style="margin-top:25px">
-    <h2><font color="red">未拥有的角色</font></h2>
-    <p><input type="checkbox" name="checks" value=""> 222</p>
-    <P class="box"></P>
-    <div class="row cl">
-      <div class="col-9 col-offset-2">
-        <input class="btn btn-primary radius sub"  value="&nbsp;&nbsp;添加&nbsp;&nbsp;">
-      </div>
     </div>
-  <!-- </form> -->
-</div>
+    <div class="submit_btn">
+          <button type="submit" id="submit_btn">立 即 添 加</button>
+        </div>
+  </form>
 </section>
 <!--_footer 作为公共模版分离出去--> 
 <script type="text/javascript" src="/thinkphp/public/static/lib/jquery/1.9.1/jquery.min.js"></script> 
@@ -41,76 +133,7 @@ $(function(){
 		radioClass: 'iradio-blue',
 		increaseArea: '20%'
 	});
-	
-	
 });
-//删除角色
-$('.del').click(function(){
-    var spCodesTemp = "";
-      $('input:checkbox[name=checkss]:checked').each(function(i){
-       if(0==i){
-        spCodesTemp = $(this).val();
-        $(this).parent().remove();
-        $('.box').html($(this).parent());
-        if(this.checked){
-          this.checked=false;
-        }
-       }else{
-        spCodesTemp += (","+$(this).val());
-        $(this).parent().remove();
-        $('.box').html($(this).parent());
-        if(this.checked){
-          this.checked=false;
-        }
-       }
-      });
-        $.ajax({
-          type: "POST",
-          url: "http://www.duoduoguanli.com/thinkphp/public/index.php/index/jurisdiction/del_role?",
-          data: {spCodesTemp:spCodesTemp},
-          success: function(msg){
-            alert(msg);
-          }
-        });
-      $("#txt_spCodes").val(spCodesTemp); 
-  })
-//删除角色
-$('.sub').click(function(){
-    var spCodesTemp = "";
-      $('input:checkbox[name=checks]:checked').each(function(i){
-       if(0==i){
-        spCodesTemp = $(this).val();
-        $(this).parent().remove();
-        $('.dex').html($(this).parent());
-        if(this.checked){
-          this.checked=false;
-        }
-       }else{
-        spCodesTemp += (","+$(this).val());
-        $(this).parent().remove();
-        $('.dex').html($(this).parent());
-        if(this.checked){
-          this.checked=false;
-        }
-       }
-      });
-        $.ajax({
-          type: "POST",
-          url: "http://www.duoduoguanli.com/thinkphp/public/index.php/index/jurisdiction/add_role?",
-          data: {spCodesTemp:spCodesTemp},
-          success: function(msg){
-            if (msg == "0") {
-              if(confirm("确定去登陆吗?")){
-                location.href="http://www.duoduoguanli.com/thinkphp/public/index.php/index/Login/index";
-              } else {
-                return;
-              }  
-
-            }
-          }
-        });
-
-  })
 </script>
 </body>
 </html>

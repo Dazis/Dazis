@@ -1,8 +1,15 @@
 <?php
 namespace app\index\controller;
-
+use think\Session;
 class Product extends \think\Controller
 {
+    public function __construct(){
+        parent::__construct();
+        $session = Session::get('name');
+        if($session==""){
+            $this->error('请先登录', 'Login/index');
+        }
+    }
     //产品管理列表
     public function pro_list(){
     	return $this->fetch('pro_list');

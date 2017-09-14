@@ -1,0 +1,107 @@
+{include file="common/header" /}
+{include file="common/menu" /}
+<section class="Hui-article-box">
+<div class="pd-20">
+  <input type="hidden" value="" class="hide">
+  <h2><font color="red">已拥有的角色</font></h2>
+      <p>
+          <?php foreach ($data as $key => $val): ?>
+            <input type="checkbox" name="test" value="<?php echo $val['roleId']?>">
+            <?php echo $val['role'];?>
+            <?php if ($key % 4== 0 && $key!= 0): ?>
+                <br />
+            <?php endif;?>
+        <?php endforeach ?>
+      </p>
+    <P class="dex"></P>
+    <div class="row cl">
+      <div class="col-9 col-offset-2">
+        <input class="btn btn-primary radius del noteDel"  value="&nbsp;&nbsp;删除&nbsp;&nbsp;">
+      </div>
+    </div>
+    <hr style="margin-top:25px">
+    <h2><font color="red">未拥有的角色</font></h2>
+    <input type="hidden" class="userId" name="userId" value="<?php echo $userId?>">
+    <p>
+    <?php foreach ($date as $key => $val): ?>
+        <input type="checkbox" name="roleId" value="<?php echo $val['roleId']?>">
+        <?php echo $val['role'];?>
+        <?php if ($key % 4== 0 && $key!= 0): ?>
+            <br />
+        <?php endif;?>
+    <?php endforeach ?>
+    </p>
+    <P class="box"></P>
+    <div class="row cl">
+      <div class="col-9 col-offset-2">
+        <input class="btn btn-primary radius sub note"  value="&nbsp;&nbsp;添加&nbsp;&nbsp;">
+      </div>
+    </div>
+</div>
+</section>
+<script type="text/javascript" src="/thinkphp/public/static/lib/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript" src="/thinkphp/public/static/lib/jquery.validation/1.14.0/jquery.validate.js"></script> 
+<script type="text/javascript" src="/thinkphp/public/static/lib/jquery.validation/1.14.0/validate-methods.js"></script> 
+<script type="text/javascript" src="/thinkphp/public/static/lib/jquery.validation/1.14.0/messages_zh.js"></script> 
+<script type="text/javascript">
+$(function(){
+  $('.skin-minimal input').iCheck({
+    checkboxClass: 'icheckbox-blue',
+    radioClass: 'iradio-blue',
+    increaseArea: '20%'
+  });
+  $('.note').click(function(){
+        var obj=document.getElementsByName('roleId'); 
+        var userId=$('.userId').val(); 
+        //选择所有name="'test'"的对象，返回数组 
+        //取到对象数组后，我们来循环检测它是不是被选中 
+        var s=''; 
+        for(var i=0; i<obj.length; i++){ 
+          if(obj[i].checked) s+=obj[i].value+','; //如果选中，将value添加到变量s中 
+        }
+        s=s.substring(0,s.length-1);
+        if(s==""){ alert("不能为空");return;}
+          $.ajax({
+             type: "POST",
+             url: "{:url('Jurisdiction/user_roleAdd')}",
+             data: {roleId:s,userId:userId},
+             success: function(msg){
+               if (msg == '1') {
+                    window.location.reload();
+                }else{
+                    alert("添加失败");
+                    window.location.reload();
+                }
+             }
+          });
+  });
+  $('.noteDel').click(function(){
+    var obj=document.getElementsByName('test'); 
+    var userId=$('.userId').val(); 
+    //选择所有name="'test'"的对象，返回数组 
+    //取到对象数组后，我们来循环检测它是不是被选中 
+    var s=''; 
+    for(var i=0; i<obj.length; i++){ 
+      if(obj[i].checked) s+=obj[i].value+','; //如果选中，将value添加到变量s中 
+    }
+    s=s.substring(0,s.length-1);
+    if(s==""){ alert("不能为空");return;}
+      $.ajax({
+         type: "POST",
+         url: "{:url('Jurisdiction/user_roledel')}",
+         data: {roleId:s,userId:userId},
+         success: function(msg){
+           if (msg == '1') {
+                window.location.reload();
+            }else{
+                alert("删除失败");
+                window.location.reload();
+            }
+         }
+      });
+  });
+});
+</script>
+</body>
+</html>
+{include file="common/footer" /}
