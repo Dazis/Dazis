@@ -6,7 +6,7 @@
     <div class="bg-fox icons"><i class="img-fox"></i></div>
     <div class="table-wraper">
       <ul class="nav nav-tabs icons">
-        <li class="active"><a href="/signup"><i class="img-cellphone"></i>手机注册</a></li>
+        <li class="active"><a href="{{url('register/index')}}"><i class="img-cellphone"></i>手机注册</a></li>
         <li><span>|</span></li>
         <li><a href="/signup?signupType=email"><i class="img-email"></i>邮箱注册</a></li>
       </ul>

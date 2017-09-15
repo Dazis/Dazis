@@ -1,56 +1,17 @@
 @include('blade.header')
-<div class="area clear god-channel-top" id="god-chan11nel-top"></div>
-    <div class="area clear god-channel-top-fix" id="god-channel-top-fix">
-
-
-
-<div class="search d1">
-
-<script language=javascript>
-    function g(formname)
-    {
-        var url = "http://www.baidu.com/baidu";
-        if (formname.s[1].checked)
-        {
-            formname.ct.value = "2097152";
-        }
-        else
-        {
-            formname.ct.value = "0";
-        }
-        formname.action = url;
-        return true;
-    }
- </SCRIPT>   
-
- <form  onsubmit="return g(this)">
-                      <input type="text" placeholder="搜索从这里开始..." name="word">
-                      <button type="submit" value="搜索"><tton>
-                      <input name=tn type=hidden value="bds">
-                        <input name=cl type=hidden value="3">
-                        <input name=ct type=hidden>
-                        <input name=si type=hidden value="bbs.baidu.com">
-                        <input name=s type=hidden checked>
-                        <input name=s type=hidden>
-                    </form>
-
-
- </div>
-
-                                                                                                                                                                                                                  
-    </div>
+<div class="area clear god-channel-top" id="god-channel-top"></div>
+    <div class="area clear god-channel-top-fix" id="god-channel-top-fix"></div>
 
     <div class="area clear" id="main-container">
         <div id="left-nav" class="column" style="visibility: hidden">
     <div class="channel-logo">
                 <a href="/">搜狐健康</a></div>
-            <div class="se0000000000000000000000000000cond-nav">
+            <div class="second-nav">
 <!--热点-->
 <div class="box box-hover common" data-role="left-hot-spots">
                 <h4><a href="javascript:void(0)">热点</a><em class="icon-angle-up"></em></h4>
          
                                                      <p><a href="//www.sohu.com/tag/64738" target="_blank">高血压</a>
-
                                           
                                                      <a href="//www.sohu.com/tag/64576" target="_blank">糖尿病</a></p>
                                           
@@ -253,37 +214,9 @@
 
         <div class="main left">
             
-            <div id="search" class="search">
-                
-            </div>
+            <div id="search" class="search"></div>
             
-            <div id="focus" class="focus-banner">
-                <div class="demo">
-                    <a class="control prev"></a><a class="control next abs"></a><!--自定义按钮，移动端可不写-->
-                    <div class="slider"><!--主体结构，请用此类名调用插件，此类名可自定义-->
-                        <ul>
-                            <li><a href=""><img src="http://www.gg.com/fuxi/09.12/img/D_1bng6oocn30_800_800.jpg" alt="两弯似蹙非蹙笼烟眉，一双似喜非喜含情目。" /></a></li>
-                            <li><a href=""><img src="../images/2.jpg" alt="态生两靥之愁，娇袭一身之病。" /></a></li>
-                            <li><a href=""><img src="../images/3.jpg" alt="泪光点点，娇喘微微。" /></a></li>
-                            <li><a href=""><img src="../images/4.jpg" alt="闲静似娇花照水，行动如弱柳扶风。" /></a></li>
-                            <li><a href=""><img src="../images/5.jpg" alt="心较比干多一窍，病如西子胜三分。" /></a></li>
-                        </ul>
-                    </div>
-                </div>
-                <script src="../js/jquery.min.js"></script>
-                <script src="../js/YuxiSlider.jQuery.min.js"></script>
-                <script>
-                $(".slider").YuxiSlider({
-                    width:640, //容器宽度
-                    height:300, //容器高度
-                    control:$('.control'), //绑定控制按钮
-                    during:4000, //间隔4秒自动滑动
-                    speed:800, //移动速度0.8秒
-                    mousewheel:true, //是否开启鼠标滚轮控制
-                    direkey:true //是否开启左右箭头方向控制
-                });
-                </script>
-            </div>
+            <div id="focus" class="focus-banner"></div>
             <!--此为财经频道头部插件位置，待配置-->
             
             <div class="news-list clearfix" id="main-news">
@@ -678,15 +611,13 @@
     </div>
 
             <div class="cooperation clear bord">
-        <div class="titleR"><span class="tt">每日咨询</span></div>
+        <div class="titleR"><span class="tt">合作机构</span></div>
         <div class="cooper">
-            
-                <?php foreach ($ren as $key => $value): ?>
-                    <a target="_blank" href="<?= $value->herf ?>"><?= $value->title ?></a> 丨                
-                <?php endforeach ?>                     
-                
+            <p>
                                    
-               <!--  <a target="_blank" href="http://www.chinacdc.cn/">中国疾病预防控制中心</a> 丨
+                <a target="_blank" href="http://www.caca.org.cn/">中国抗癌协会</a> 丨
+                                   
+                <a target="_blank" href="http://www.chinacdc.cn/">中国疾病预防控制中心</a> 丨
                                    
                 <a target="_blank" href="http://www.cma.org.cn/">中华医学会</a> 丨
                                    
@@ -720,8 +651,8 @@
                                    
                 <a target="_blank" href="http://www.bjchfp.gov.cn/">北京市卫生和计划生育委员会</a> 丨
                                    
-                <a target="_blank" href="http://www.pumc.edu.cn/">中国医学科学院 北京协和医学院</a> 丨 -->
-            
+                <a target="_blank" href="http://www.pumc.edu.cn/">中国医学科学院 北京协和医学院</a> 丨
+                            </p>
         </div>
     </div>
         
@@ -746,7 +677,7 @@
 
 
 
-<!-- <script src="../js/lib-111eab4f1d.js"></script> -->
+<script src="../js/lib-111eab4f1d.js"></script>
 <!--<script src="../js/ie8hack-07e05e83f1.js"></script>-->
 <script src="../js/a4fb1be3951b439199e2e790bacc643f.js"></script>
 <script src="../js/main-f89ae5c422.js"></script>
