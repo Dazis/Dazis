@@ -16,15 +16,6 @@
 <link rel="apple-touch-icon" sizes="114x114" href="//statics.itc.cn/web/static/images/pic/sohu-logo/logo-114.png" />
 <link rel="apple-touch-icon" sizes="144x144" href="//statics.itc.cn/web/static/images/pic/sohu-logo/logo-144.png" />
 <link href="../css/main-8444a11c0e.css" rel="stylesheet"/>
-<link rel="stylesheet" href="../css/style1.css">
-
-  
-<!-- <link rel="stylesheet" type="text/css" href="../css/normalize1.css" /> -->
-<!-- <link rel="stylesheet" href="../css/font-awesome.min.css"> -->
-<!-- <link rel="stylesheet" type="text/css" href="../css/demo.css"> -->
-
-<link rel="stylesheet" href="../css/style2.css">
-
 <script>
     //  加载监控代码
 </script>
